@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MasterTechParallelMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:home="clr-namespace:MasterTechParallelMAUI.Views.Home"
+    xmlns:ai="clr-namespace:MasterTechParallelMAUI.Views.AI"
+    xmlns:translate="clr-namespace:MasterTechParallelMAUI.Views.Translate"
+    xmlns:profile="clr-namespace:MasterTechParallelMAUI.Views.Profile">
+
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate home:HomePage}" />
+        </Tab>
+        <Tab Title="AI">
+            <ShellContent ContentTemplate="{DataTemplate ai:AiPage}" />
+        </Tab>
+        <Tab Title="Translate">
+            <ShellContent ContentTemplate="{DataTemplate translate:TranslatePage}" />
+        </Tab>
+        <Tab Title="Profile">
+            <ShellContent ContentTemplate="{DataTemplate profile:ProfilePage}" />
+        </Tab>
+    </TabBar>
+</Shell>

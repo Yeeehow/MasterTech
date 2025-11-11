@@ -1,0 +1,11 @@
+# Ignore Visual Studio temporary files
+.vs/
+.vscode/
+
+# Ignore build directories
+bin/
+obj/
+
+# macOS and Windows system files
+.DS_Store
+Thumbs.db

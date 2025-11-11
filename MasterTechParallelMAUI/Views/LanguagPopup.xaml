@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2021/maui/toolkit"
+             x:Class="MasterTechParallelMAUI.Views.LanguagePopup">
+
+    <VerticalStackLayout Spacing="20" Padding="20">
+        <!-- Title -->
+        <Label Text="App Language"
+               FontSize="20" FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <!-- Language Selection Buttons -->
+        <Button Text="中文 (Chinese)" Command="{Binding SelectLanguageCommand}" CommandParameter="zh"/>
+        <Button Text="Español (Spanish)" Command="{Binding SelectLanguageCommand}" CommandParameter="es"/>
+
+        <HorizontalStackLayout Spacing="20">
+            <!-- Cancel & Save Buttons -->
+            <Button Text="Cancel" Command="{Binding ClosePopupCommand}"/>
+            <Button Text="Save Preference" Command="{Binding SavePreferenceCommand}"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

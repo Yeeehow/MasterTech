@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MasterTechParallelMAUI.Views.Home.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+	<ScrollView>
+		<VerticalStackLayout Spacing="16" Padding="16,0,16,24">
+
+			<!-- Header Section -->
+			<Grid HeightRequest="96" Padding="16" BackgroundColor="#D32F2F"
+                  ColumnDefinitions="Auto,*,Auto,Auto"
+                  RowDefinitions="Auto,Auto"
+                  Margin="-16,0,-16,12">
+				<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Coles" TextColor="White"
+                       FontSize="28" FontAttributes="Bold"
+                       VerticalOptions="End" />
+				<!-- Language Icon -->
+				<ImageButton Grid.Row="0" Grid.Column="2"
+							 Source="language.png"
+							 BackgroundColor="Transparent"
+							 HeightRequest="28" WidthRequest="28"
+							 HorizontalOptions="End" Margin="0,8,8,0"
+							 Clicked="OnLanguageIconClicked" />
+
+				<!-- Cart Icon -->
+				<ImageButton Grid.Row="0" Grid.Column="3"
+							 Source="cart.png"
+							 BackgroundColor="Transparent"
+							 HeightRequest="28" WidthRequest="28"
+							 HorizontalOptions="End" Margin="0,8,8,0"/>
+
+				<!-- Search bar -->
+				<Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                        StrokeShape="RoundRectangle 14"
+                        BackgroundColor="White" Margin="0,8,0,8" Padding="12">
+					<Grid ColumnDefinitions="Auto,*">
+						<Image Source="search.png" HeightRequest="18" WidthRequest="18"
+                               VerticalOptions="Center" />
+						<Entry Grid.Column="1"
+                               Placeholder="Search for products..."
+                               FontSize="14"
+                               TextColor="#222"
+                               PlaceholderColor="#888"
+                               BackgroundColor="Transparent"/>
+					</Grid>
+				</Border>
+			</Grid>
+
+			<!-- Quick Access -->
+			<Label Text="Quick Access" FontSize="18" FontAttributes="Bold" TextColor="#222" Margin="0,24,0,8" />
+
+			<!-- Quick Access Cards -->
+			<Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" RowSpacing="12">
+				<!-- Translate Card (full width) -->
+				<Border StrokeShape="RoundRectangle 18" Padding="16">
+					<Border.Background>
+						<LinearGradientBrush EndPoint="1,1">
+							<GradientStop Color="#2196F3" Offset="0.0"/>
+							<GradientStop Color="#1976D2" Offset="1.0"/>
+						</LinearGradientBrush>
+					</Border.Background>
+					<VerticalStackLayout Spacing="4" HorizontalOptions="FillAndExpand">
+						<Label Text="Translate" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+						<Label Text="Translate product labels in real-time"
+                               FontSize="13" TextColor="#F0F0F0"/>
+					</VerticalStackLayout>
+				</Border>
+
+				<!-- Coles AI Assistant Card (full width) -->
+				<Border Grid.Row="1" StrokeShape="RoundRectangle 18" Padding="16">
+					<Border.Background>
+						<LinearGradientBrush EndPoint="1,1">
+							<GradientStop Color="#9C27B0" Offset="0.0"/>
+							<GradientStop Color="#7B1FA2" Offset="1.0"/>
+						</LinearGradientBrush>
+					</Border.Background>
+					<VerticalStackLayout Spacing="4" HorizontalOptions="FillAndExpand">
+						<Label Text="Coles AI Assistant" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+						<Label Text="Smart navigation, recommendations &amp; meal planning"
+                                   FontSize="13" TextColor="#F0F0F0"/>
+					</VerticalStackLayout>
+				</Border>
+			</Grid>
+
+			<!-- Feature Tiles (widened buttons) -->
+			<Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+				<!-- Upload Shopping List (widened) -->
+				<Border Stroke="{x:Null}" BackgroundColor="#F7F7F7" StrokeShape="RoundRectangle 16" Padding="14">
+					<VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+						<Frame WidthRequest="72" HeightRequest="72" CornerRadius="36"
+                               BackgroundColor="#E8F5E9" HasShadow="False"/>
+						<Label Text="Upload Shopping" FontSize="13" HorizontalTextAlignment="Center"/>
+						<Label Text="List" FontSize="13" HorizontalTextAlignment="Center"/>
+					</VerticalStackLayout>
+				</Border>
+
+				<!-- Favourites (widened) -->
+				<Border Grid.Column="1" BackgroundColor="#F7F7F7" StrokeShape="RoundRectangle 16" Padding="14">
+					<VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+						<Frame WidthRequest="72" HeightRequest="72" CornerRadius="36"
+                               BackgroundColor="#FCE4EC" HasShadow="False"/>
+						<Label Text="Favourites" FontSize="13" HorizontalTextAlignment="Center"/>
+					</VerticalStackLayout>
+				</Border>
+
+				<!-- Smart Navigation (widened) -->
+				<Border Grid.Row="1" BackgroundColor="#F7F7F7" StrokeShape="RoundRectangle 16" Padding="14">
+					<VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+						<Frame WidthRequest="72" HeightRequest="72" CornerRadius="36"
+                               BackgroundColor="#FFF3E0" HasShadow="False"/>
+						<Label Text="Smart Navigation" FontSize="13" HorizontalTextAlignment="Center"/>
+					</VerticalStackLayout>
+				</Border>
+
+				<!-- Meal Planning (widened) -->
+				<Border Grid.Row="1" Grid.Column="1" BackgroundColor="#F7F7F7" StrokeShape="RoundRectangle 16" Padding="14">
+					<VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+						<Frame WidthRequest="72" HeightRequest="72" CornerRadius="36"
+                               BackgroundColor="#FFF8E1" HasShadow="False"/>
+						<Label Text="Meal Planning" FontSize="13" HorizontalTextAlignment="Center"/>
+					</VerticalStackLayout>
+				</Border>
+			</Grid>
+
+			<!-- Featured Deals -->
+			<Grid ColumnDefinitions="*,Auto" Margin="0,8,0,4">
+				<Label Text="Featured Deals" FontSize="18" FontAttributes="Bold" TextColor="#222"/>
+				<Label Grid.Column="1" Text="View All" TextColor="#D32F2F" FontSize="14" VerticalTextAlignment="Center"/>
+			</Grid>
+
+			<!-- Placeholder Featured Deals -->
+			<CollectionView ItemsLayout="HorizontalList" HeightRequest="140">
+				<CollectionView.ItemsSource>
+					<x:Array Type="{x:Type View}">
+						<Border StrokeShape="RoundRectangle 14" WidthRequest="160" Margin="0,0,12,0" BackgroundColor="#FFFFFF" />
+						<Border StrokeShape="RoundRectangle 14" WidthRequest="160" Margin="0,0,12,0" BackgroundColor="#FFFFFF" />
+						<Border StrokeShape="RoundRectangle 14" WidthRequest="160" Margin="0,0,12,0" BackgroundColor="#FFFFFF" />
+					</x:Array>
+				</CollectionView.ItemsSource>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid>
+							<ContentPresenter />
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+			<BoxView HeightRequest="24" Opacity="0"/>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
