@@ -3,9 +3,54 @@
     x:Class="MasterTechParallelMAUI.Views.AI.AiPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="AI">
-    <Grid>
-        <Label Text="AI (placeholder)" 
-               HorizontalOptions="Center" VerticalOptions="Center"/>
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F5F5F5">
+
+    <!-- Use a Grid to structure the page -->
+    <Grid RowDefinitions="*,Auto" Padding="0">
+
+        <!-- Chat Header -->
+        <Grid BackgroundColor="#D32F2F" HeightRequest="80" VerticalOptions="Start">
+            <Label Text="Coles AI Assistant"
+                   FontSize="22" FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+        </Grid>
+
+        <!-- Chat Messages Area -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="16" Spacing="12" BackgroundColor="White" HeightRequest="400">
+                <!-- Chat messages will be displayed here -->
+                <ListView x:Name="ChatMessages"
+                          ItemsSource="{Binding _chatMessages}" 
+                          SeparatorVisibility="None" 
+                          HasUnevenRows="True" 
+                          VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="12" BackgroundColor="#eeeeee" CornerRadius="12" HorizontalOptions="Start">
+                                    <Label Text="{Binding}" TextColor="#222" />
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Suggested Questions (Button options) -->
+        <Grid Grid.Row="1" Padding="16" ColumnDefinitions="*,*,*">
+            <Button Text="Where can I find dairy products?" BackgroundColor="#eeeeee" />
+            <Button Text="What’s on special this week?" BackgroundColor="#eeeeee" />
+            <Button Text="Do you have gluten-free bread?" BackgroundColor="#eeeeee" />
+        </Grid>
+
+        <!-- Input Area (Fixed at bottom) -->
+        <Grid Grid.Row="1" Padding="16, 8" BackgroundColor="White" ColumnDefinitions="*,Auto" VerticalOptions="End">
+            <Entry x:Name="UserInput" Placeholder="Ask me anything..." HorizontalOptions="FillAndExpand" />
+            <Button Text="&#9993;" FontSize="24" BackgroundColor="#1976D2" TextColor="White" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center" Clicked="OnSendMessage"/>
+        </Grid>
+
     </Grid>
 </ContentPage>

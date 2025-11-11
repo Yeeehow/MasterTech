@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Maui.Controls;
+using CommunityToolkit.Maui.Alerts;
 
 namespace MasterTechParallelMAUI.Views.Translate
 {
@@ -12,5 +9,17 @@ namespace MasterTechParallelMAUI.Views.Translate
         {
             InitializeComponent();
         }
+
+        // Handle the "Take Picture" button click event
+        private async void OnTakePictureClicked(object sender, EventArgs e)
+        {
+            // For now, simulate taking a picture
+            // In the future, this can trigger camera functionality
+            await Toast.Make("This will open the camera for text recognition").Show();
+
+            // Here, you can implement the logic to open the camera and extract text.
+        }
+
+        // You can add methods to handle language selection and translation logic later
     }
 }

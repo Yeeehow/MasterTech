@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="MasterTechParallelMAUI.Views.Profile.ProfilePage"
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="AI">
-    <Grid>
-        <Label Text="Profile (placeholder)" HorizontalOptions="Center" VerticalOptions="Center"/>
-    </Grid>
+<ContentPage
+    x:Class="MasterTechParallelMAUI.Views.Profile.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F5F5F5"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="20">
+            <!-- Profile Image -->
+            <Frame HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="profile_avatar.png" Aspect="AspectFill" />
+            </Frame>
+
+            <!-- User Information -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="John Doe" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label Text="john.doe@email.com" FontSize="14" HorizontalOptions="Center" TextColor="#777" />
+            </VerticalStackLayout>
+
+            <!-- Action Buttons -->
+            <VerticalStackLayout Spacing="12">
+                <Button Text="Edit Profile" BackgroundColor="#1976D2" TextColor="White" HeightRequest="50" />
+                <Button Text="Change Password" BackgroundColor="#1976D2" TextColor="White" HeightRequest="50" />
+                <Button Text="Sign Out" BackgroundColor="#D32F2F" TextColor="White" HeightRequest="50" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

@@ -8,16 +8,24 @@
     xmlns:translate="clr-namespace:MasterTechParallelMAUI.Views.Translate"
     xmlns:profile="clr-namespace:MasterTechParallelMAUI.Views.Profile">
 
+    <!-- TabBar for navigation -->
     <TabBar>
+        <!-- Home Tab -->
         <Tab Title="Home">
             <ShellContent ContentTemplate="{DataTemplate home:HomePage}" />
         </Tab>
+
+        <!-- AI Tab (for the AIPage view) -->
         <Tab Title="AI">
             <ShellContent ContentTemplate="{DataTemplate ai:AiPage}" />
         </Tab>
+
+        <!-- Translate Tab -->
         <Tab Title="Translate">
             <ShellContent ContentTemplate="{DataTemplate translate:TranslatePage}" />
         </Tab>
+
+        <!-- Profile Tab -->
         <Tab Title="Profile">
             <ShellContent ContentTemplate="{DataTemplate profile:ProfilePage}" />
         </Tab>
