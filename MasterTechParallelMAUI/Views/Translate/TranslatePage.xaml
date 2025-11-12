@@ -10,25 +10,24 @@
     <VerticalStackLayout Spacing="16" Padding="0">
 
         <!-- Top Bar with Language Select -->
-        <Grid RowDefinitions="Auto" ColumnDefinitions="*,Auto,*" Padding="16">
-            <!-- Detected Language Label -->
-            <Label Text="Detected Language" FontSize="14" HorizontalOptions="Start" VerticalOptions="Center" />
+        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" Padding="16">
+            <Label Text="Detected Language" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
             <Label Text="English" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
-            <!-- Translate To Label -->
-            <Label Text="Translate To" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" />
-            <Label Text="Malay" FontSize="14" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center" />
-        </Grid>
+            <Label Text="Translate To" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="Malay" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+        </VerticalStackLayout>
 
         <!-- Center Image Box for Camera -->
         <Frame HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center" 
                BackgroundColor="#eeeeee" BorderColor="#1976D2" Padding="20">
-            <Image Source="camera_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+            <!-- Image will be shown here after taking the picture -->
+            <Image x:Name="cameraImage" HorizontalOptions="Center" VerticalOptions="Center" />
         </Frame>
 
         <!-- Bottom Bar with Camera Button -->
         <Grid Padding="16">
             <Button Text="Take Picture" BackgroundColor="#D32F2F" TextColor="White" WidthRequest="200" HeightRequest="50" 
-                    HorizontalOptions="Center" VerticalOptions="End" />
+                    HorizontalOptions="Center" VerticalOptions="End" Clicked="OnTakePictureClicked" />
         </Grid>
 
     </VerticalStackLayout>
