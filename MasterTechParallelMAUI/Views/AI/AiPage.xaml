@@ -3,54 +3,86 @@
     x:Class="MasterTechParallelMAUI.Views.AI.AiPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:conv="clr-namespace:MasterTechParallelMAUI.Converters"
     Shell.NavBarIsVisible="False"
     BackgroundColor="#F5F5F5">
 
-    <!-- Use a Grid to structure the page -->
-    <Grid RowDefinitions="*,Auto" Padding="0">
+    <Grid RowDefinitions="60,*,Auto,Auto">
 
-        <!-- Chat Header -->
-        <Grid BackgroundColor="#D32F2F" HeightRequest="80" VerticalOptions="Start">
+        <!-- Header -->
+        <Grid BackgroundColor="#D32F2F" Grid.Row="0">
             <Label Text="Coles AI Assistant"
-                   FontSize="22" FontAttributes="Bold"
+                   FontSize="22"
+                   FontAttributes="Bold"
                    TextColor="White"
-                   HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
         </Grid>
 
-        <!-- Chat Messages Area -->
-        <ScrollView Grid.Row="0">
-            <VerticalStackLayout Padding="16" Spacing="12" BackgroundColor="White" HeightRequest="400">
-                <!-- Chat messages will be displayed here -->
-                <ListView x:Name="ChatMessages"
-                          ItemsSource="{Binding _chatMessages}" 
-                          SeparatorVisibility="None" 
-                          HasUnevenRows="True" 
-                          VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame Padding="12" BackgroundColor="#eeeeee" CornerRadius="12" HorizontalOptions="Start">
-                                    <Label Text="{Binding}" TextColor="#222" />
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </VerticalStackLayout>
+        <!-- Messages -->
+        <CollectionView x:Name="MessagesView"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Messages}"
+                        BackgroundColor="White"
+                        Margin="0,4"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8">
+                        <Border
+                            StrokeThickness="0"
+                            Padding="10"
+                            MaximumWidthRequest="320"
+                            HorizontalOptions="{Binding IsUser, Converter={x:Static conv:BoolToLayoutOptionsConverter.Instance}}"
+                            BackgroundColor="{Binding IsUser, Converter={x:Static conv:BoolToColorConverter2.Instance}}"
+                            StrokeShape="RoundRectangle 12">
+                            <Label Text="{Binding Message}"
+                                   TextColor="{Binding IsUser, Converter={x:Static conv:BoolToTextColorConverter.Instance}}" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Suggested questions -->
+        <ScrollView Grid.Row="2" Orientation="Horizontal" Padding="10,4">
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Where can I find dairy products?"
+                        Clicked="OnSuggestedQuestionClicked"
+                        BackgroundColor="#EEEEEE" TextColor="#000" CornerRadius="20" />
+                <Button Text="What’s on special this week?"
+                        Clicked="OnSuggestedQuestionClicked"
+                        BackgroundColor="#EEEEEE" TextColor="#000" CornerRadius="20" />
+                <Button Text="Do you have gluten-free bread?"
+                        Clicked="OnSuggestedQuestionClicked"
+                        BackgroundColor="#EEEEEE" TextColor="#000" CornerRadius="20" />
+                <Button Text="Show me healthy snack options"
+                        Clicked="OnSuggestedQuestionClicked"
+                        BackgroundColor="#EEEEEE" TextColor="#000" CornerRadius="20" />
+            </HorizontalStackLayout>
         </ScrollView>
 
-        <!-- Suggested Questions (Button options) -->
-        <Grid Grid.Row="1" Padding="16" ColumnDefinitions="*,*,*">
-            <Button Text="Where can I find dairy products?" BackgroundColor="#eeeeee" />
-            <Button Text="What’s on special this week?" BackgroundColor="#eeeeee" />
-            <Button Text="Do you have gluten-free bread?" BackgroundColor="#eeeeee" />
-        </Grid>
+        <!-- Input bar -->
+        <Grid Grid.Row="3" Padding="12" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
 
-        <!-- Input Area (Fixed at bottom) -->
-        <Grid Grid.Row="1" Padding="16, 8" BackgroundColor="White" ColumnDefinitions="*,Auto" VerticalOptions="End">
-            <Entry x:Name="UserInput" Placeholder="Ask me anything..." HorizontalOptions="FillAndExpand" />
-            <Button Text="&#9993;" FontSize="24" BackgroundColor="#1976D2" TextColor="White" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center" Clicked="OnSendMessage"/>
-        </Grid>
+            <Entry x:Name="UserInput"
+                   Placeholder="Ask me anything..."
+                   HeightRequest="44"
+                   BackgroundColor="#F0F0F0"
+                   TextColor="#000"
+                   Margin="0,0,8,0" />
 
+            <ImageButton Source="send_icon.png"
+                         BackgroundColor="#D32F2F"
+                         Grid.Column="1"
+                         HeightRequest="44"
+                         WidthRequest="44"
+                         CornerRadius="22"
+                         Clicked="OnSendMessage" />
+        </Grid>
     </Grid>
 </ContentPage>
